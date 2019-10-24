@@ -18,27 +18,26 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins
 sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
 ```
 # Install Jenkins.
+```sh
 sudo yum install -y jenkins
 ```
-
 # Building in Jenkins
 
-# Create a folder named Test
+## Create a folder named Test
 ```sh
  In the dashboard click on create item, from there enter "Test" at the top of the page and then click "folder" and then "ok"
 ```
 
- # Create a user test job that saves it output in a file "user_test.txt"
-```sh
+ ## Create a user test job that saves it output in a file "user_test.txt"
 - In the folder you created, go to new item on the left, then name the item user_test and then click **"freestyle build"** and then **"ok"** 
 
 - In the job configuration page in the build step, click **execute shell**, then in the text box type **uname -a && whoami > user_test.txt** then click **save**.
 
 - Then click **build** on the left, Then click **workspace** and locate the file, view the contets of the file by clicking view on the page. This should result in the username 'jenkins'
 
-# Building from SCM
+## Building from SCM
 
-## Configure Maven Installer
+### Configure Maven Installer
 
 - Navigate to Manage Jenkins and then Global Tool Configuration. Scroll down to Maven Installations.
 
@@ -47,7 +46,7 @@ The Maven installation should be named "M3".
 
 Create a new Maven installation and set it to install automatically.
 
-# Configure the Build to Use Maven and Make the Index File
+### Configure the Build to Use Maven and GIT
 
  - Create a new Freestlye Project called "mavenproject".
 
@@ -62,5 +61,4 @@ Create a new Maven installation and set it to install automatically.
   ```sh
    clean package install 
   ```
-
   - Add a post-build step to archive the artifacts.
